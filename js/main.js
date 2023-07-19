@@ -25,7 +25,7 @@ trackIndex = 0;
 
 tracks = [
   "../musics/Eminem_G.mp3",
-  "../musics/Metro_Boomin_Superhero"
+  "../musics/Metro_Boomin_Superhero.mp3",
   
 ];
 thumbnails = [
