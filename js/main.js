@@ -10,7 +10,6 @@ boutonlog.addEventListener('click',()=>{
 
 const track = document.getElementById("track");
 const thumbnail = document.getElementById("thumbnail");
-const background = document.getElementById("background");
 const trackArtist = document.getElementById("track-artist");
 const trackTitle = document.getElementById("track-title");
 const progressBar = document.getElementById("progressBar");
@@ -24,14 +23,14 @@ let prev = document.getElementById("prev-track");
 trackIndex = 0;
 
 tracks = [
-  "../musics/Eminem_G.mp3",
-  "../musics/Metro_Boomin_Superhero.mp3",
+  "musics/Eminem_G.mp3",
+  "musics/metro.mp3",
   
 ];
 thumbnails = [
   
 ];
-trackArtists = ["Eminem","Metro_Boomin",];
+trackArtists = ["Eminem","Metro_Boomin"];
 
 trackTitles = ["Godzilla","Superhero"];
 
@@ -70,11 +69,10 @@ function nextTrack() {
 
   track.src = tracks[trackIndex];
   thumbnail.src = thumbnails[trackIndex];
-  background.src = thumbnails[trackIndex];
 
   trackArtist.textContent = trackArtists[trackIndex];
   trackTitle.textContent = trackTitles[trackIndex];
- 
+
   playing = true;
   pausePlay();
 }
@@ -89,7 +87,6 @@ function prevTrack() {
 
   track.src = tracks[trackIndex];
   thumbnail.src = thumbnails[trackIndex];
-  background.src = thumbnails[trackIndex];
 
   trackArtist.textContent = trackArtists[trackIndex];
   trackTitle.textContent = trackTitles[trackIndex];
@@ -124,4 +121,3 @@ function changeProgressBar() {
 }
 
 progressBar.addEventListener("click", changeProgressBar);
-

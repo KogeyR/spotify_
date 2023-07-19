@@ -91,7 +91,7 @@ include 'traitement/connection.php';
 <!-- music player -->
  
 <div class="player-container">
-  <img src="musics/images/500x500.jpg"  id="thumbnail" />
+  <img src=""  id="thumbnail" />
 
   <div class="box">
     <div class="play-pause">
