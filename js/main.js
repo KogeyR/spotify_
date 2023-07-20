@@ -22,19 +22,17 @@ let next = document.getElementById("next-track");
 let prev = document.getElementById("prev-track");
 trackIndex = 0;
 
+
 tracks = [
   "musics/Eminem_G.mp3",
   "musics/metro.mp3",
-  
 ];
 thumbnails = [
-  "https://i1.sndcdn.com/artworks-000675219829-3jglm5-t500x500.jpg",
-  "https://groundzero.fr/wp-content/uploads/2022/04/61rgnbku6hL._UF10001000_QL80_.jpg",
-  
+  "",
+  "https://images.genius.com/bf3bea9f728e14af9c4317f7693a0c23.1000x1000x1.png",
 ];
-trackArtists = ["Eminem","Metro_Boomin"];
-
-trackTitles = ["Godzilla","Superhero"];
+trackArtists = ["Eminem", "MetroBoomin",];
+trackTitles = ["Godzilla", "SuperHero",];
 
 let playing = true;
 
@@ -42,7 +40,6 @@ function pausePlay() {
   if (playing) {
     play.style.display = "none";
     pause.style.display = "block";
-
     thumbnail.style.transform = "scale(1.25)";
 
     track.play();
@@ -50,7 +47,6 @@ function pausePlay() {
   } else {
     pause.style.display = "none";
     play.style.display = "block";
-
     thumbnail.style.transform = "scale(1)";
 
     track.pause();

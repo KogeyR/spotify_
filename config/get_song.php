@@ -1,28 +1,33 @@
 <?php
+include "../traitement/connection.php";
 
-$data = json_decode(file_get_contents('php://input'), true);
+function getMusics($baseSpotify) {
 
-function getSong($key = false)
-{
-    if ($key) {
-        try {
-            require '../traitement/connection.php';
-            $prepareMusic = $baseSpotify->prepare("SELECT * FROM song where id = '$key'");
-            $prepareMusic->execute();
-            $fetchedMusic = $prepareMusic->fetchAll();
-        } catch (PDOException $exception) {
-            echo $exception->getMusic();
-            exit();
-        }
-    } else {
-        exit();
-    }
-    return $fetchedMusic;
+$query = "SELECT * FROM song";
+$statement = $baseSpotify->prepare($query);
+$statement->execute();
+$musics = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+$songs = [];
+foreach ($musics as $music) {
+    $song = [
+        'id' => $music['id'],
+        'name' => $music['name'],
+        'author' => $music['author'],
+        'file' => $music['file'],
+    ];
+    array_push($songs, $song);
+
+
+
+}
+return $songs;
 }
 
-$key = true;
 
- 
-$fetchedSong = getSong($key);
-echo json_encode($fetchedMusic);
- 
+$songs = getMusics($baseSpotify);
+header('Content-Type: application/json');
+echo json_encode(array('songs' => $songs));
+
+?>
+
