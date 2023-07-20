@@ -26,15 +26,21 @@ trackIndex = 0;
 tracks = [
   "musics/Eminem_G.mp3",
   "musics/metro.mp3",
+  "musics/2pac_all.mp3",
 ];
 thumbnails = [
-  "",
+  "https://flpstudio.com/cdn/shop/products/Eminem-feat.-Juice-WRLD---Godzilla-_FL-Studio-Remake_1200x1200.png?v=1641264705",
   "https://images.genius.com/bf3bea9f728e14af9c4317f7693a0c23.1000x1000x1.png",
+  "https://m.media-amazon.com/images/I/81+hlw7I9BL._UF894,1000_QL80_.jpg",
 ];
-trackArtists = ["Eminem", "MetroBoomin",];
-trackTitles = ["Godzilla", "SuperHero",];
+trackArtists = ["Eminem", "MetroBoomin","2pac",];
+trackTitles = [
+  "Godzilla",
+   "SuperHero",
+   "All Eyes On Me",];
 
 let playing = true;
+
 
 function pausePlay() {
   if (playing) {
@@ -47,6 +53,7 @@ function pausePlay() {
   } else {
     pause.style.display = "none";
     play.style.display = "block";
+
     thumbnail.style.transform = "scale(1)";
 
     track.pause();

@@ -1,5 +1,6 @@
 <?php
 include 'traitement/connection.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +90,6 @@ include 'traitement/connection.php';
 </div>
  
 <!-- music player -->
- 
 <div class="player-container">
   <img src=""  id="thumbnail" />
 
