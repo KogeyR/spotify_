@@ -7,7 +7,7 @@ function getSong($key = false)
     if ($key) {
         try {
             require '../traitement/connection.php';
-            $prepareMusic = $baseSpotify->prepare("SELECT * FROM song");
+            $prepareMusic = $baseSpotify->prepare("SELECT * FROM song where id = '$key'");
             $prepareMusic->execute();
             $fetchedMusic = $prepareMusic->fetchAll();
         } catch (PDOException $exception) {

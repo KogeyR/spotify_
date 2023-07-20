@@ -1,4 +1,5 @@
 <?php
+
 try 
     {
         $baseSpotify = new PDO('mysql:host=127.0.0.1;dbname=spotify;charset=utf8', 'root');
@@ -8,4 +9,3 @@ try
     {
         die('Erreur : ' .$e->getMessage());
     }
-?> 

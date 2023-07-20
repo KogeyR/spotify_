@@ -28,6 +28,8 @@ tracks = [
   
 ];
 thumbnails = [
+  "https://i1.sndcdn.com/artworks-000675219829-3jglm5-t500x500.jpg",
+  "https://groundzero.fr/wp-content/uploads/2022/04/61rgnbku6hL._UF10001000_QL80_.jpg",
   
 ];
 trackArtists = ["Eminem","Metro_Boomin"];

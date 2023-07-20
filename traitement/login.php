@@ -20,7 +20,7 @@ function verifyUsernameAndLogin(string $username)
         $fetchedUser = $prepareUser->fetch();
     } catch (PDOException $exception) {
         $_SESSION['lastErrMsg'] = $exception->getMessage();
-        header('Location: ../index.php?err=fetchForVerificationFailed');
+        header('Location:../index.php?err=fetchForVerificationFailed');
         exit();
     }
 
@@ -42,7 +42,7 @@ function addUserAndFetchUserInfos($username)
     } catch (PDOException $exception) {
         $_SESSION['lastErrMsg'] = $exception->getMessage();
         echo $exception;
-        header('Location: ../index.php?err=insertUsernameFailed');
+        header('Location:../index.php?err=insertUsernameFailed');
         exit();
     }
 
