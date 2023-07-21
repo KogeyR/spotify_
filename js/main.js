@@ -20,27 +20,68 @@ let play = document.getElementById("play");
 let pause = document.getElementById("pause");
 let next = document.getElementById("next-track");
 let prev = document.getElementById("prev-track");
+let random = document.getElementById("random-play");
 trackIndex = 0;
+
 
 
 tracks = [
   "musics/Eminem_G.mp3",
   "musics/metro.mp3",
   "musics/2pac_all.mp3",
+  "musics/A$ap_rocky.mp3",
+  "musics/Coolio_Ga.mp3",
+  "musics/J.Cole.mp3",
+ 
 ];
 thumbnails = [
   "https://flpstudio.com/cdn/shop/products/Eminem-feat.-Juice-WRLD---Godzilla-_FL-Studio-Remake_1200x1200.png?v=1641264705",
   "https://images.genius.com/bf3bea9f728e14af9c4317f7693a0c23.1000x1000x1.png",
   "https://m.media-amazon.com/images/I/81+hlw7I9BL._UF894,1000_QL80_.jpg",
+  "https://i.scdn.co/image/ab67616d0000b2739feadc48ab0661e9b3a9170b",
+  "https://hiphopcorner.fr/wp-content/uploads/2017/03/image-cover-Gangstas-Paradise-de-Coolio-article-retour-vers-le-classique.jpg",
+  "https://images.genius.com/3b02f41397586e2b3c8bd3fbbc586928.1000x1000x1.png",
+ 
+  
 ];
-trackArtists = ["Eminem", "MetroBoomin","2pac",];
+trackArtists = ["Eminem", 
+"MetroBoomin",
+"2pac",
+"A$ap Rocky",
+"Coolio",
+"J.cole",];
+
 trackTitles = [
   "Godzilla",
    "SuperHero",
-   "All Eyes On Me",];
+   "All Eyes On Me",
+   "Praise The Lord",
+  "Gangsta's Paradise",
+  "No Role Modelz",
+  
+  ];
 
 let playing = true;
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadTrack(0); 
+});
+
+function loadTrack(index) {
+  trackIndex = index;
+  track.src = tracks[trackIndex];
+  thumbnail.src = thumbnails[trackIndex];
+  trackArtist.textContent = trackArtists[trackIndex];
+  trackTitle.textContent = trackTitles[trackIndex];
+  playing = true;
+  pausePlay();
+}
+
+
+play.addEventListener("click", pausePlay);
+pause.addEventListener("click", pausePlay);
+random.addEventListener('click', getRandomIndex);
+track.addEventListener("ended", nextTrack);
 
 function pausePlay() {
   if (playing) {
@@ -61,10 +102,6 @@ function pausePlay() {
   }
 }
 
-play.addEventListener("click", pausePlay);
-pause.addEventListener("click", pausePlay);
-
-track.addEventListener("ended", nextTrack);
 
 function nextTrack() {
   trackIndex++;
@@ -120,6 +157,32 @@ function formatTime(sec) {
   }
   return `${minutes}:${seconds}`;
 }
+
+
+
+function getRandomIndex(excludeIndex, arrayLength) {
+  let randomIndex = Math.floor(Math.random() * arrayLength);
+  if (randomIndex === excludeIndex) {
+    randomIndex = (randomIndex + 1) % arrayLength;
+  }
+  return randomIndex;
+}
+
+function playRandomTrack() {
+  let randomIndex = getRandomIndex(trackIndex, tracks.length);
+
+  trackIndex = randomIndex;
+  track.src = tracks[trackIndex];
+  thumbnail.src = thumbnails[trackIndex];
+  trackArtist.textContent = trackArtists[trackIndex];
+  trackTitle.textContent = trackTitles[trackIndex];
+
+  playing = true;
+  pausePlay();
+}
+
+random.addEventListener("click", playRandomTrack);
+
 
 function changeProgressBar() {
   track.currentTime = progressBar.value;

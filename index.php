@@ -1,4 +1,5 @@
 <?php
+
 include 'traitement/connection.php';
 
 ?>
@@ -8,7 +9,9 @@ include 'traitement/connection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css%22%3E">
+
 </head>
 
 <body>
@@ -97,7 +100,13 @@ include 'traitement/connection.php';
     <div class="play-pause">
       <i class="far fa-play-circle fa-3x" id="play"></i>
       <i class="far fa-pause-circle fa-3x" id="pause"></i>
+      <div class="btn-random">
+  <button id="random-play"><i class="fa-solid fa-shuffle"></i></button>
+</div>
     </div>
+    
+  
+
     <div class="track-info">
       <div id="track-artist"></div>
       <div id="track-title"></div>
@@ -116,7 +125,6 @@ include 'traitement/connection.php';
   </div>
 </div>
 <script src="https://kit.fontawesome.com/7d35781f0a.js" crossorigin="anonymous"></script> 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
 </body>
 <script src="js/main.js"></script>

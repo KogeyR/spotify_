@@ -354,13 +354,19 @@ body {
     "five five five five";
   column-gap: 10px;
 }
-
+s
 .play-pause {
   grid-area: one;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
+
+.btn-random {
+  width: 40px;
+  height: 40px; 
+}
+
 
 .fa-pause-circle {
   filter: invert(1);
