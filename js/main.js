@@ -14,7 +14,21 @@ let tracks = [];
 let thumbnails = [];
 let trackArtists = [];
 let trackTitles = [];
+let isRandomPlaying = false;
 
+function loadTrack() {
+  trackIndex = index;
+  track.src = tracks[trackIndex];
+  thumbnail.src = thumbnails[trackIndex];
+  trackArtist.textContent = trackArtists[trackIndex];
+  trackTitle.textContent = trackTitles[trackIndex];
+
+
+  track.addEventListener('canplay', function () {
+    playing = true;
+    pausePlay();
+  });
+}
 
 function fetchAudioData() {
   fetch('config/get_song.php')
@@ -22,7 +36,7 @@ function fetchAudioData() {
     .then(data => {
       const { songs } = data;
       tracks = songs.map(song => song.file);
-      thumbnails = songs.map(song => song.thumbnail);
+      thumbnails = songs.map(song => song.image);
       trackArtists = songs.map(song => song.author);
       trackTitles = songs.map(song => song.name);
 
@@ -60,19 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let random = document.getElementById("random-play");
   let playing = true;
 
-  function loadTrack() {
-    trackIndex = index;
-    track.src = tracks[trackIndex];
-    thumbnail.src = thumbnails[trackIndex];
-    trackArtist.textContent = trackArtists[trackIndex];
-    trackTitle.textContent = trackTitles[trackIndex];
-
-  
-    track.addEventListener('canplay', function () {
-      playing = true;
-      pausePlay();
-    });
-  }
+ 
  
 
   play.addEventListener("click", pausePlay);
@@ -84,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (playing) {
       play.style.display = "none";
       pause.style.display = "block";
-      thumbnail.style.transform = "scale(1.25)";
       track.play();
       playing = false;
     } else {
@@ -153,16 +154,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function playRandomTrack() {
-    let randomIndex = getRandomIndex(trackIndex, tracks.length);
-    trackIndex = randomIndex;
-    track.src = tracks[trackIndex];
-    thumbnail.src = thumbnails[trackIndex];
-    trackArtist.textContent = trackArtists[trackIndex];
-    trackTitle.textContent = trackTitles[trackIndex];
-    playing = true;
-    pausePlay();
-  }
+    if (isRandomPlaying) return; 
 
+    isRandomPlaying = true;
+    random.style.backgroundColor = "orange";
+    function playNextRandomTrack() {
+      let randomIndex = getRandomIndex(trackIndex, tracks.length);
+      trackIndex = randomIndex;
+      track.src = tracks[trackIndex];
+      thumbnail.src = thumbnails[trackIndex];
+      trackArtist.textContent = trackArtists[trackIndex];
+      trackTitle.textContent = trackTitles[trackIndex];
+
+      playing = true;
+      pausePlay();
+
+      track.addEventListener('ended', playNextRandomTrack);
+    }
+
+    playNextRandomTrack();
+  }
   random.addEventListener("click", playRandomTrack);
 
   function changeProgressBar() {
@@ -170,4 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   progressBar.addEventListener("click", changeProgressBar);
+})
+.catch(error => {
+  console.error('Error fetching audio data:', error);
 });

@@ -15,15 +15,12 @@ foreach ($musics as $music) {
         'name' => $music['name'],
         'author' => $music['author'],
         'file' => $music['file'],
+        'image' => $music['image'],
     ];
     array_push($songs, $song);
-
-
-
 }
 return $songs;
 }
-
 
 $songs = getMusics($baseSpotify);
 header('Content-Type: application/json');
