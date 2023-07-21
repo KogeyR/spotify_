@@ -39,7 +39,6 @@ function fetchAudioData() {
       thumbnails = songs.map(song => song.image);
       trackArtists = songs.map(song => song.author);
       trackTitles = songs.map(song => song.name);
-
       
       loadTrack(0);
     })

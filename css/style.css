@@ -21,20 +21,18 @@ body {
   border: solid rgb(88, 87, 93);
 }
 
-.btnlog {}
-
 
 
 /* sidebar home,search etc */
 
 .sidebar {
   position: fixed;
-  left: 0;
   top: 0;
   bottom: 0;
   width: 196px;
   background-color: #000000;
   padding: 24px;
+  z-index: 2;
 }
 
 .sidebar .logo img {
@@ -107,18 +105,22 @@ body {
 }
 
 .main-container {
-  margin-left: 245px;
+  margin-left: 196px;
   margin-bottom: 100px;
 }
 
 /* topbar connexion et compte */
 
 .topbar {
-  display: inline-flex;
-  justify-content: space-between;
-  background-color: #101010;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #4b4b4b;
   padding: 14px 30px;
-  width: auto;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
 }
 
 .topbar .prev-next-buttons button {
@@ -208,7 +210,6 @@ body {
 
 .spotify-playlists .list .item {
   min-width: 140px;
-  width: 160px;
   padding: 15px;
   background-color: #403b3b;
   background-color: #322e2e;
@@ -315,20 +316,22 @@ body {
 }
 
 .player-container {
-  display: flex;
-  flex-direction: column;
   position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   height: 400px;
   width: 325px;
-  margin: auto;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 0 30px #6b6363;
   background-color: #222;
 }
+
 
 #thumbnail {
   position: absolute;
@@ -362,9 +365,6 @@ s .play-pause {
   align-items: center;
 }
 
-.btn-random {
-  scale: initial;
-}
 
 
 .fa-pause-circle {
