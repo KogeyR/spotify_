@@ -7,57 +7,6 @@ boutonlog.addEventListener('click',()=>{
 })
 
 // music player
-
-
-let trackIndex = 0;
-let tracks = [];
-let thumbnails = [];
-let trackArtists = [];
-let trackTitles = [];
-let isRandomPlaying = false;
-
-function loadTrack() {
-  trackIndex = index;
-  track.src = tracks[trackIndex];
-  thumbnail.src = thumbnails[trackIndex];
-  trackArtist.textContent = trackArtists[trackIndex];
-  trackTitle.textContent = trackTitles[trackIndex];
-
-
-  track.addEventListener('canplay', function () {
-    playing = true;
-    pausePlay();
-  });
-}
-
-function fetchAudioData() {
-  fetch('config/get_song.php')
-    .then(response => response.json())
-    .then(data => {
-      const { songs } = data;
-      tracks = songs.map(song => song.file);
-      thumbnails = songs.map(song => song.image);
-      trackArtists = songs.map(song => song.author);
-      trackTitles = songs.map(song => song.name);
-      
-      loadTrack(0);
-    })
-    .catch(error => {
-      console.error('Error fetching audio data:', error);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  fetchAudioData();
-
-
-  let boutonlog = document.querySelector("#connection");
-  let form = document.querySelector("#form");
-
-  boutonlog.addEventListener('click', () => {
-    form.hidden = false;
-  });
-
   const track = document.getElementById("track");
   const thumbnail = document.getElementById("thumbnail");
   const trackArtist = document.getElementById("track-artist");
@@ -73,8 +22,46 @@ document.addEventListener('DOMContentLoaded', () => {
   let random = document.getElementById("random-play");
   let playing = true;
 
- 
- 
+let trackIndex = 0;
+let tracks = [];
+let thumbnails = [];
+let trackArtists = [];
+let trackTitles = [];
+let isRandomPlaying = false;
+
+function loadTrack(index) {
+  trackIndex = index;
+  track.src = tracks[trackIndex];
+  thumbnail.src = thumbnails[trackIndex];
+  trackArtist.textContent = trackArtists[trackIndex];
+  trackTitle.textContent = trackTitles[trackIndex];
+
+  track.load();
+
+  track.addEventListener('canplay', function () {
+    playing = true;
+    pausePlay();
+  });
+}
+
+
+function fetchAudioData() {
+  fetch('config/get_song.php')
+    .then(response => response.json())
+    .then(data => {
+      const { songs } = data;
+      tracks = songs.map(song => song.file);
+      thumbnails = songs.map(song => song.image);
+      trackArtists = songs.map(song => song.author);
+      trackTitles = songs.map(song => song.name);
+    })
+    .catch(error => {
+      console.error('Error fetching audio data:', error);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchAudioData();
 
   play.addEventListener("click", pausePlay);
   pause.addEventListener("click", pausePlay);

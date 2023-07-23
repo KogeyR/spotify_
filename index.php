@@ -72,7 +72,6 @@ include 'traitement/connection.php';
             <input class="btnlog" type="submit" value="Login">
             </form>
 
-
         <div class="spotify-playlists">
             <h2>Spotify Playlists</h2>
 
@@ -86,7 +85,6 @@ include 'traitement/connection.php';
                     <p>Eminem,Metro Boomin,iamjakehill</p>
                 </div>
             </div>
-
 
             <div class="outer-container">
   <audio src="" id="track"></audio>
@@ -105,8 +103,6 @@ include 'traitement/connection.php';
 </div>
     </div>
     
-  
-
     <div class="track-info">
       <div id="track-artist"></div>
       <div id="track-title"></div>
